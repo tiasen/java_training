@@ -1,0 +1,17 @@
+server:
+  port: 8180
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    hostname: ${HOST}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    register-with-eureka: false
+    fetch-registry: false
+  server:
+    eviction-interval-timer-in-ms: 5000

@@ -1,0 +1,24 @@
+server:
+  port: 8082
+spring:
+  profiles:
+    active: dev
+  application:
+    name: user-client
+  cloud:
+    config:
+      label: master
+      discovery:
+        enabled: true
+        service-id: config-server
+      name: user
+      uri: http://${CONFIG_SERVER_HOST}:7000
+      profile: ${CONFIG_PROFILE}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_HOST}:8180/eureka/
+feign:
+  hystrix:
+    enabled: true

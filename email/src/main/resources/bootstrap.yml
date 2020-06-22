@@ -1,0 +1,21 @@
+server:
+  port: 8081
+spring:
+  profiles:
+    active: dev
+  cloud:
+    config:
+      label: master
+      discovery:
+        enabled: true
+        service-id: config-server
+      name: email
+      uri: http://${CONFIG_SERVER_HOST}:7000
+      profile: dev
+  application:
+    name: email-client
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_HOST}:8180/eureka

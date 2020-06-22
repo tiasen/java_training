@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/java_training?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    username: training
+    password: training
+  jpa:
+    show-sql: true
+  flyway:
+    url: jdbc:mysql://127.0.0.1:3306/java_training?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    user: training
+    password: training
+    locations: classpath:db/migration # 指定sql文件存放的目录
