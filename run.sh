@@ -9,4 +9,4 @@ docker volume create --name=java-training-email-gradle-cache
 docker volume create --name=java-training-eureka-gradle-cache
 
 
-docker-compose up -e PASSWORD=${PASSWORD:? "password must be set"}
+docker-compose up

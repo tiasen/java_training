@@ -12,13 +12,13 @@ spring:
         enabled: true
         service-id: config-server
       name: user
-      uri: http://${CONFIG_SERVER_HOST}:7000
-      profile: ${CONFIG_PROFILE}
+      uri: http://localhost:7000
+      profile: dev
 
 eureka:
   client:
     service-url:
-      defaultZone: http://${EUREKA_HOST}:8180/eureka/
+      defaultZone: http://localhost:8180/eureka/
 feign:
   hystrix:
     enabled: true

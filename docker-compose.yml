@@ -11,16 +11,18 @@ services:
       MYSQL_PASSWORD: training
     volumes:
       - java_training_db:/var/lib/mysql
+    ports:
+      - 3306:3306
 
   eureka-server:
     image: openjdk:11-jdk
     working_dir: /app
     environment:
-      HOST: eurekas-server
+      host: eurekas-server
     volumes:
       - java-training-eureka-gradle-cache:/root/.gradle
       - ./eureka:/app
-    command: ./gradlew clean bootRun
+    command: ./gradlew clean bootrun
 
   email-client:
     image: openjdk:11-jdk
@@ -29,9 +31,9 @@ services:
       - java-training-email-gradle-cache:/root/.gradle
       - ./email:/app
     environment:
-      CONFIG_SERVER_HOST: config-server
-      EUREKA_HOST: eureka-server
-    command: ./gradlew clean bootRun
+      config_server_host: config-server
+      eureka_host: eureka-server
+    command: ./gradlew clean bootrun
     depends_on:
       - db
 
@@ -42,9 +44,9 @@ services:
       - java-training-gateway-gradle-cache:/root/.gradle
       - ./gateway:/app
     environment:
-      CONFIG_SERVER_HOST: config-server
-      EUREKA_HOST: eureka-server
-    command: ./gradlew clean bootRun
+      config_server_host: config-server
+      eureka_host: eureka-server
+    command: ./gradlew clean bootrun
     depends_on:
       - eureka-server
     ports:
@@ -57,8 +59,8 @@ services:
       - java-training-config-gradle-cache:/root/.gradle
       - ./config-server:/app
     environment:
-      PASSWORD: 52f234b951cbd1ba634122850e57df9074e6934a
-    command: ./gradlew clean bootRun
+      password: 52f234b951cbd1ba634122850e57df9074e6934a
+    command: ./gradlew clean bootrun
     depends_on:
       - eureka-server
 
@@ -69,10 +71,10 @@ services:
       - java-training-user-gradle-cache:/root/.gradle
       - ./user:/app
     environment:
-      CONFIG_SERVER_HOST: config-server
-      EUREKA_HOST: eureka-server
-      CONFIG_PROFILE: docker
-    command: ./gradlew clean bootRun
+      config_server_host: config-server
+      eureka_host: eureka-server
+      config_profile: docker
+    command: ./gradlew clean bootrun
     depends_on:
       - db
       - config-server

@@ -10,7 +10,7 @@ spring:
         enabled: true
         service-id: config-server
       name: gateway
-      uri: http://${CONFIG_SERVER_HOST}:7000
+      uri: http://localhost:7000
       profile: dev
     gateway:
       discovery:
@@ -28,4 +28,4 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://${EUREKA_HOST}:8180/eureka/
+      defaultZone: http://localhost:8180/eureka/

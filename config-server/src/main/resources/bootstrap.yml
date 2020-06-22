@@ -11,11 +11,11 @@ spring:
             - user
             - gateway
           username: tiasen
-          password: ${PASSWORD}
+          password: 52f234b951cbd1ba634122850e57df9074e6934a
         default-profile: dev
 server:
   port: 7000
 eureka:
   client:
     service-url:
-      defaultZone: http://${EUREKA_HOST}:8180/eureka/
+      defaultZone: http://localhost:8180/eureka/

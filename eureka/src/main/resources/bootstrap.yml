@@ -6,7 +6,7 @@ spring:
 
 eureka:
   instance:
-    hostname: ${HOST}
+    hostname: localhost
     prefer-ip-address: true
   client:
     service-url:
